@@ -4,10 +4,10 @@ define("MANHDUC_THEME_URL", get_template_directory_uri());
 define("MANHDUC_THEME_CSS", MANHDUC_THEME_URL . "/css");
 define("MANHDUC_THEME_IMG", MANHDUC_THEME_URL . "/img");
 define("MANHDUC_THEME_JS", MANHDUC_THEME_URL . "/js");
-define("MANHDUC_THEME_LANG", MANHDUC_THEME_URL . "/lang");
+define("MANHDUC_THEME_LANG", MANHDUC_THEME_DIR . "/lang");
 define("MANHDUC_THEME_LIP", MANHDUC_THEME_URL . "/lib");
 define("MANHDUC_THEME_SCSS", MANHDUC_THEME_URL . "/scss");
-define("MANHDUC_THEME_TEMPLATES", MANHDUC_THEME_URL . "/templates");
+define("MANHDUC_THEME_TEMPLATES", MANHDUC_THEME_DIR . "/templates");
 function manhduc_enqueue_style()
 {
     wp_enqueue_style("manhduc_theme_style_1", "https://fonts.googleapis.com", array(), "1.0", "all");
@@ -40,3 +40,24 @@ function manhduc_enqueue_script()
     wp_enqueue_script("manhduc_script_9", MANHDUC_THEME_JS . "/main.js", array(), "1.0", true);
 }
 add_action("wp_enqueue_scripts", "manhduc_enqueue_script");
+function hoangson_option()
+{
+    add_theme_support('post-thumbnails');
+    // add more title tag 
+    add_theme_support('title-tag');
+    // add menu for wordpress 
+    register_nav_menu('primary', __('Primary Menu', 'manhduc'));
+    // add side bar 
+    register_sidebar(array(
+        'name'          => __('Primary Sidebar', 'manhduc'),
+        'id'            => 'primary-sidebar',
+        'description'   => __('Widgets in this area will be shown in the primary sidebar.', 'manhduc'),
+        'class'=>'primary-sidebar',
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ));
+    load_theme_textdomain('manhduc',MANHDUC_THEME_LANG);
+}
+add_action("init", "hoangson_option");

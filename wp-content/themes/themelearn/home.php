@@ -530,6 +530,7 @@
     </div>
     <?php
     get_footer();
+    echo __('Hello', 'manhduc')
     ?>
 </body>
 

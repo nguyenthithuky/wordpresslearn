@@ -20,11 +20,11 @@ msgstr "danh sách chính "
 
 #: functions.php:52
 msgid "Primary Sidebar"
-msgstr ""
+msgstr "Danh sach phu"
 
 #: functions.php:54
 msgid "Widgets in this area will be shown in the primary sidebar."
-msgstr ""
+msgstr "tien ich nbo  dung "
 
 #: home.php:533
 msgid "Hello"
